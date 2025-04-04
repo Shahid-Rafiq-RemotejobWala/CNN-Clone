@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNN Clone - Home</title>
+    <style>
+        /* CSS Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: #c00; /* CNN Red */
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background: #333;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+        }
+        nav ul li a:hover {
+            background: #555;
+        }
+        main {
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .featured-news {
+            margin-bottom: 2rem;
+        }
+        .featured-article {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        .featured-article img {
+            width: 100%;
+            height: auto;
+        }
+        .featured-article-content {
+            padding: 1rem;
+        }
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .category {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+        }
+        .category:hover {
+            background: #f5f5f5;
+        }
+        .category img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        /* Article Page Styling */
+        .article-page {
+            display: none;
+        }
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-content img {
+            width: 100%;
+            height: auto;
+        }
+        .related-articles {
+            margin-top: 2rem;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            .category-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <h1>CNN CLONE</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showHome()">Home</a></li>
+            <li><a href="#" onclick="showCategory('world')">World</a></li>
+            <li><a href="#" onclick="showCategory('sports')">Sports</a></li>
+            <li><a href="#" onclick="showCategory('technology')">Technology</a></li>
+            <li><a href="#" onclick="showCategory('entertainment')">Entertainment</a></li>
+        </ul>
+    </nav>
+
+    <!-- Homepage -->
+    <main id="homepage">
+        <section class="featured-news">
+            <h2>Breaking News</h2>
+            <div class="featured-article">
+                <img src="https://via.placeholder.com/800x400?text=Breaking+News" alt="Breaking News">
+                <div class="featured-article-content">
+                    <h3>Global Summit Addresses Climate Change</h3>
+                    <p>World leaders gather to discuss urgent climate action amid rising global temperatures.</p>
+                    <button onclick="showArticle(1)">Read More</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-categories">
+            <h2>News Categories</h2>
+            <div class="category-list">
+                <div class="category" onclick="showCategory('world')">
+                    <img src="https://via.placeholder.com/300x200?text=World" alt="World">
+                    <h3>World</h3>
+                </div>
+                <div class="category" onclick="showCategory('sports')">
+                    <img src="https://via.placeholder.com/300x200?text=Sports" alt="Sports">
+                    <h3>Sports</h3>
+                </div>
+                <div class="category" onclick="showCategory('technology')">
+                    <img src="https://via.placeholder.com/300x200?text=Technology" alt="Technology">
+                    <h3>Technology</h3>
+                </div>
+                <div class="category" onclick="showCategory('entertainment')">
+                    <img src="https://via.placeholder.com/300x200?text=Entertainment" alt="Entertainment">
+                    <h3>Entertainment</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Category Pages (Hidden by Default) -->
+    <div id="category-world" class="article-page">
+        <div class="article-content">
+            <h2>World News</h2>
+            <div class="featured-article" onclick="showArticle(2)">
+                <img src="https://via.placeholder.com/800x400?text=World+News" alt="World News">
+                <h3>UN Calls for Peace in Conflict Zones</h3>
+                <p>The United Nations urges nations to prioritize diplomacy over military action.</p>
+                <button onclick="showArticle(2)">Read More</button>
+            </div>
+            <div class="featured-article" onclick="showArticle(3)">
+                <img src="https://via.placeholder.com/800x400?text=Global+Economy" alt="Global Economy">
+                <h3>Global Economy Shows Signs of Recovery</h3>
+                <p>Experts predict economic growth after a turbulent year.</p>
+                <button onclick="showArticle(3)">Read More</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="category-sports" class="article-page">
+        <div class="article-content">
+            <h2>Sports News</h2>
+            <div class="featured-article" onclick="showArticle(4)">
+                <img src="https://via.placeholder.com/800x400?text=Sports" alt="Sports">
+                <h3>Olympics 2024: New Records Broken</h3>
+                <p>Athletes set new world records in track and field events.</p>
+                <button onclick="showArticle(4)">Read More</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Pages (Hidden by Default) -->
+    <div id="article-1" class="article-page">
+        <div class="article-content">
+            <h2>Global Summit Addresses Climate Change</h2>
+            <img src="https://via.placeholder.com/800x400?text=Climate+Summit" alt="Climate Summit">
+            <p>World leaders gathered in New York for the annual Climate Action Summit. Key discussions included reducing carbon emissions, investing in renewable energy, and protecting vulnerable nations from rising sea levels.</p>
+            <p>The summit concluded with a pledge to cut global emissions by 50% by 2030.</p>
+            <div class="related-articles">
+                <h3>Related Articles</h3>
+                <ul>
+                    <li><a href="#" onclick="showArticle(2)">UN Calls for Peace in Conflict Zones</a></li>
+                    <li><a href="#" onclick="showArticle(3)">Global Economy Shows Signs of Recovery</a></li>
+                </ul>
+            </div>
+            <button onclick="showHome()">Back to Home</button>
+        </div>
+    </div>
+
+    <div id="article-2" class="article-page">
+        <div class="article-content">
+            <h2>UN Calls for Peace in Conflict Zones</h2>
+            <img src="https://via.placeholder.com/800x400?text=UN+Peace" alt="UN Peace">
+            <p>The United Nations Security Council held an emergency meeting to address escalating tensions in conflict zones. Secretary-General Antonio Guterres urged nations to prioritize diplomatic solutions.</p>
+            <button onclick="showHome()">Back to Home</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 CNN Clone. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Navigation -->
+    <script>
+        // Show Homepage
+        function showHome() {
+            document.getElementById('homepage').style.display = 'block';
+            hideAllCategories();
+            hideAllArticles();
+        }
+
+        // Show Category Page
+        function showCategory(category) {
+            hideAllPages();
+            document.getElementById(`category-${category}`).style.display = 'block';
+        }
+
+        // Show Article Page
+        function showArticle(articleId) {
+            hideAllPages();
+            document.getElementById(`article-${articleId}`).style.display = 'block';
+        }
+
+        // Hide All Pages
+        function hideAllPages() {
+            document.getElementById('homepage').style.display = 'none';
+            hideAllCategories();
+            hideAllArticles();
+        }
+
+        // Hide All Categories
+        function hideAllCategories() {
+            const categories = document.querySelectorAll('.article-page');
+            categories.forEach(cat => {
+                if (cat.id.startsWith('category-')) {
+                    cat.style.display = 'none';
+                }
+            });
+        }
+
+        // Hide All Articles
+        function hideAllArticles() {
+            const articles = document.querySelectorAll('.article-page');
+            articles.forEach(article => {
+                if (article.id.startsWith('article-')) {
+                    article.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize: Show Homepage by Default
+        window.onload = showHome;
+    </script>
+</body>
+</html>
